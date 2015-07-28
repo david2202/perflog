@@ -18,6 +18,7 @@ import javax.xml.xpath.XPathFactory;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -26,6 +27,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
@@ -93,8 +95,14 @@ public class Run {
 		SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
 				sslcontext, new String[] { "TLSv1" }, null,
 				SSLConnectionSocketFactory.getDefaultHostnameVerifier());
-		CloseableHttpClient httpClient = HttpClients.custom()
-				.setSSLSocketFactory(sslsf).build();
+		HttpClientBuilder builder = HttpClients.custom()
+				.setSSLSocketFactory(sslsf);
+		if (config.containsKey("proxy.host") && config.containsKey("proxy.port")) {
+			HttpHost proxy = new HttpHost(config.getString("proxy.host"), config.getInt("proxy.port"), "http");
+			builder.setProxy(proxy);
+		}
+		CloseableHttpClient httpClient = builder.build(); 
+				
 		Integer interval = config.getInteger("intervalMins", 30);
 
 		try {

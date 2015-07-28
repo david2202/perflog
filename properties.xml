@@ -4,6 +4,10 @@
 	<intervalMins>30</intervalMins>
 	<!-- The new relic account -->
 	<account>1003053</account>
+	<proxy>
+		<host>localhost</host>
+		<port>3128</port>
+	</proxy>
 	<metrics>
 		<metric>
 			<applicationId>6912152</applicationId>
