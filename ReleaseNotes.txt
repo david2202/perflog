@@ -1,0 +1,7 @@
+
+
+Version Date     Changes
+======= ======== =========================================================
+0.0.2            Initial release
+0.0.3   23/06/15 Added parameter to start from an earlier day
+                 Included date in output

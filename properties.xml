@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+	<!-- The time interval to report over in minutes-->
+	<intervalMins>30</intervalMins>
+	<!-- The new relic account -->
+	<account>1003053</account>
+	<metrics>
+		<metric>
+			<applicationId>6912152</applicationId>
+			<name>XMLAPI throughtput (req/min)</name>
+			<metric>WebTransaction/Servlet/xmlapi</metric>
+			<field>throughput</field>
+			<xpath>/metrics/metric[@name='WebTransaction/Servlet/xmlapi']/field[@name='throughput']
+			</xpath>
+			<scale>0</scale>
+			<multiplier>60</multiplier>
+		</metric>
+		<!-- 
+		<metric>
+			<applicationId>6912152</applicationId>
+			<name>XMLAPI response (secs)</name>
+			<metric>WebTransaction/Servlet/xmlapi</metric>
+			<field>average_response_time</field>
+			<xpath>/metrics/metric[@name='WebTransaction/Servlet/xmlapi']/field[@name='average_response_time']
+			</xpath>
+			<scale>2</scale>
+		</metric>
+		-->
+		<metric>
+			<applicationId>6912152</applicationId>
+			<name>XMLAPI Active HTTP threads</name>
+			<metric>JmxBuiltIn/ThreadPool/"http-nio-8080"/Active</metric>
+			<field>average_value</field>
+			<xpath>/metrics/metric[@name='JmxBuiltIn/ThreadPool/"http-nio-8080"/Active']/field[@name='average_value']
+			</xpath>
+			<scale>2</scale>
+		</metric>
+		<!--
+		<metric>
+			<applicationId>6912152</applicationId>
+			<name>XMLAPI Max HTTP threads</name>
+			<metric>JmxBuiltIn/ThreadPool/"http-nio-8080"/Max</metric>
+			<field>average_value</field>
+			<xpath>/metrics/metric[@name='JmxBuiltIn/ThreadPool/"http-nio-8080"/Max']/field[@name='average_value']
+			</xpath>
+			<scale>0</scale>
+		</metric>
+		 -->
+		<metric>
+			<applicationId>7080622</applicationId>
+			<name>Portal throughtput (req/min)</name>
+			<metric>WebTransaction</metric>
+			<field>throughput</field>
+			<xpath>/metrics/metric[@name='WebTransaction']/field[@name='throughput']</xpath>
+			<scale>0</scale>
+			<multiplier>60</multiplier>
+		</metric>
+		<!-- 
+		<metric>
+			<applicationId>7080622</applicationId>
+			<name>Portal response (secs)</name>
+			<metric>WebTransaction</metric>
+			<field>average_response_time</field>
+			<xpath>/metrics/metric[@name='WebTransaction']/field[@name='average_response_time']</xpath>
+			<scale>2</scale>
+		</metric>
+		 -->
+		<metric>
+			<applicationId>7080622</applicationId>
+			<name>Portal Active HTTP threads</name>
+			<metric>JmxBuiltIn/ThreadPool/network//thread-pool/Active</metric>
+			<field>average_value</field>
+			<xpath>/metrics/metric[@name='JmxBuiltIn/ThreadPool/network//thread-pool/Active']/field[@name='average_value']
+			</xpath>
+			<scale>2</scale>
+		</metric>
+		<!-- 
+		<metric>
+			<applicationId>7080622</applicationId>
+			<name>Portal Idle HTTP threads</name>
+			<metric>JmxBuiltIn/ThreadPool/network//thread-pool/Idle</metric>
+			<field>average_value</field>
+			<xpath>/metrics/metric[@name='JmxBuiltIn/ThreadPool/network//thread-pool/Idle']/field[@name='average_value']
+			</xpath>
+			<scale>0</scale>
+		</metric>
+		 -->
+	</metrics>
+</properties>
